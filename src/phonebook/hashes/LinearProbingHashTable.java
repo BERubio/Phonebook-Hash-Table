@@ -140,7 +140,7 @@ public class LinearProbingHashTable extends OpenAddressingHashTable {
     	   this.table[target_index] = new KVPair(key, value);
     	   this.count++; 
     	   
-    	   //What do I return???
+    	   //return string value of cell
     	   return value;   
        }
     }
@@ -150,7 +150,7 @@ public class LinearProbingHashTable extends OpenAddressingHashTable {
     	if(key == null) {
     		return null;
     	}
-    // set target cell
+       // set target cell
        int target_index = this.hash(key);
        int start_index = this.hash(key);
        int collision_count = 0;
