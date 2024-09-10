@@ -14,7 +14,7 @@ import phonebook.utils.PrimeGenerator;
  * inserted without collisions. {@link QuadraticProbingHashTable} is a {@link HashTable} that
  * tries to avoid this problem, albeit sacrificing cache locality.</p>
  *
- * @author YOUR NAME HERE!
+ * @author BRANDON RUBIO
  *
  * @see HashTable
  * @see SeparateChainingHashTable
@@ -114,23 +114,7 @@ public class OrderedLinearProbingHashTable extends OpenAddressingHashTable {
         			 for(KVPair pairs : newTable) {
         				 
         				 put(pairs.getKey(), pairs.getValue());
-        				 /*int newIndex = this.hash(pairs.getKey());
         				 
-        				 while(this.table[newIndex] != null) {
-        					 
-        					 //supposed to 'ignore' tombstones when reordering keys
-        					 
-        					 // Am I ordering keys properly?? Should i insert and then re-order???
-        					 if(this.table[newIndex].getKey().compareTo(pairs.getKey()) > 0 && this.table[newIndex] != TOMBSTONE ) {
-        						 KVPair temp = this.table[newIndex];
-        						 this.table[newIndex] = pairs;
-        						 pairs = temp;
-        					 }
-        					 
-        					 newIndex = (newIndex + 1) % this.table.length;
-        				 }
-        				 this.table[newIndex] = pairs;
-        				 this.count++;*/
         			 }
         		 }
         	 }
@@ -138,9 +122,6 @@ public class OrderedLinearProbingHashTable extends OpenAddressingHashTable {
         	 //if no re-size is needed, place new KV pair
         	 KVPair insert = new KVPair(key, value);
              while(this.table[target_index] != null) {
-            	 /*if(target_index == start_index && collisions > 0) {
-            		 return null;
-            	 }*/
             	 
             	 //iteration is based on comparison rather than equality
             	 if(this.table[target_index].getKey().compareTo(insert.getKey()) >= 0 && this.table[target_index] != TOMBSTONE) {
